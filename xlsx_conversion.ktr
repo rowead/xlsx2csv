@@ -1144,10 +1144,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>if &#x28;cell_bold &#x3d;&#x3d; &#x27;true&#x27; &#x26;&#x26; markup.indexOf&#x28;&#x27;&#x3c;b&#x3e;&#x27;&#x29; &#x3c;0&#x29; &#x7b;&#xa;	markup &#x3d; &#x27;&#x3c;b&#x3e;&#x27; &#x2b; markup &#x2b; &#x27;&#x3c;&#x2f;b&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;if &#x28;cell_italic &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	markup &#x3d; &#x27;&#x3c;i&#x3e;&#x27; &#x2b; markup &#x2b; &#x27;&#x3c;&#x2f;i&#x3e;&#x27;&#x3b;&#xa;&#x7d;</jsScript_script>
-      </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
-        <jsScript_name>Item_0</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
+        <jsScript_script>if &#x28;cell_bold &#x3d;&#x3d; &#x27;true&#x27; &#x26;&#x26; markup.indexOf&#x28;&#x27;&#x3c;strong&#x3e;&#x27;&#x29; &#x3c;0&#x29; &#x7b; &#x2f;&#x2f; seem to get bold cells with bold tags already&#xa;	markup &#x3d; &#x27;&#x3c;strong&#x3e;&#x27; &#x2b; markup &#x2b; &#x27;&#x3c;&#x2f;strong&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;if &#x28;cell_italic &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	markup &#x3d; &#x27;&#x3c;em&#x3e;&#x27; &#x2b; markup &#x2b; &#x27;&#x3c;&#x2f;em&#x3e;&#x27;&#x3b;&#xa;&#x7d;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>markup</name>
         <rename>markup</rename>
         <type>String</type>
@@ -1183,7 +1180,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>function nl2br &#x28;str, is_xhtml&#x29; &#x7b;&#xa;    var breakTag &#x3d; &#x28;is_xhtml &#x7c;&#x7c; typeof is_xhtml &#x3d;&#x3d;&#x3d; &#x27;undefined&#x27;&#x29; &#x3f; &#x27;&#x3c;br &#x2f;&#x3e;&#x27; &#x3a; &#x27;&#x3c;br&#x3e;&#x27;&#x3b;&#xa;    return &#x28;str &#x2b; &#x27;&#x27;&#x29;.replace&#x28;&#x2f;&#x28;&#x5b;&#x5e;&#x3e;&#x5c;r&#x5c;n&#x5d;&#x3f;&#x29;&#x28;&#x5c;r&#x5c;n&#x7c;&#x5c;n&#x5c;r&#x7c;&#x5c;r&#x7c;&#x5c;n&#x29;&#x2f;g, &#x27;&#x24;1&#x27; &#x2b; breakTag &#x2b; &#x27;&#x24;2&#x27;&#x29;&#x3b;&#xa;&#x7d;&#xa;var shared_strings_markup&#x3b;&#xa;&#xa;shared_strings_markup &#x3d; content&#x3b;&#xa;&#xa;if &#x28;bold &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	shared_strings_markup &#x3d; &#x27;&#x3c;b&#x3e;&#x27; &#x2b; shared_strings_markup &#x2b; &#x27;&#x3c;&#x2f;b&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;if &#x28;italics &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	shared_strings_markup &#x3d; &#x27;&#x3c;i&#x3e;&#x27; &#x2b; shared_strings_markup &#x2b; &#x27;&#x3c;&#x2f;i&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;&#xa;shared_strings_markup &#x3d; nl2br&#x28;shared_strings_markup,true&#x29;&#x3b;</jsScript_script>
+        <jsScript_script>function nl2br &#x28;str, is_xhtml&#x29; &#x7b;&#xa;    var breakTag &#x3d; &#x28;is_xhtml &#x7c;&#x7c; typeof is_xhtml &#x3d;&#x3d;&#x3d; &#x27;undefined&#x27;&#x29; &#x3f; &#x27;&#x3c;br &#x2f;&#x3e;&#x27; &#x3a; &#x27;&#x3c;br&#x3e;&#x27;&#x3b;&#xa;    return &#x28;str &#x2b; &#x27;&#x27;&#x29;.replace&#x28;&#x2f;&#x28;&#x5b;&#x5e;&#x3e;&#x5c;r&#x5c;n&#x5d;&#x3f;&#x29;&#x28;&#x5c;r&#x5c;n&#x7c;&#x5c;n&#x5c;r&#x7c;&#x5c;r&#x7c;&#x5c;n&#x29;&#x2f;g, &#x27;&#x24;1&#x27; &#x2b; breakTag &#x2b; &#x27;&#x24;2&#x27;&#x29;&#x3b;&#xa;&#x7d;&#xa;var shared_strings_markup&#x3b;&#xa;&#xa;shared_strings_markup &#x3d; content&#x3b;&#xa;&#xa;if &#x28;bold &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	shared_strings_markup &#x3d; &#x27;&#x3c;strong&#x3e;&#x27; &#x2b; shared_strings_markup &#x2b; &#x27;&#x3c;&#x2f;strong&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;if &#x28;italics &#x3d;&#x3d; &#x27;true&#x27;&#x29; &#x7b;&#xa;	shared_strings_markup &#x3d; &#x27;&#x3c;em&#x3e;&#x27; &#x2b; shared_strings_markup &#x2b; &#x27;&#x3c;&#x2f;em&#x3e;&#x27;&#x3b;&#xa;&#x7d;&#xa;&#xa;shared_strings_markup &#x3d; nl2br&#x28;shared_strings_markup,true&#x29;&#x3b;</jsScript_script>
       </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
         <jsScript_name>Item_0</jsScript_name>
         <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;</jsScript_script>
@@ -1271,7 +1268,7 @@
         <in_stream_name>markup</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
-        <replace_string>&#x5c;&#x3c;&#x5c;&#x2f;b&#x5c;&#x3e;&#x5c;&#x3c;&#x5c;&#x2f;i&#x5c;&#x3e;&#x5c;s&#x2a;&#x5c;&#x3c;i&#x5c;&#x3e;&#x5c;&#x3c;b&#x5c;&#x3e;</replace_string>
+        <replace_string>&#x5c;&#x3c;&#x5c;&#x2f;strong&#x5c;&#x3e;&#x5c;&#x3c;&#x5c;&#x2f;em&#x5c;&#x3e;&#x5c;s&#x2a;&#x5c;&#x3c;em&#x5c;&#x3e;&#x5c;&#x3c;strong&#x5c;&#x3e;</replace_string>
         <replace_by_string/>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
@@ -1560,8 +1557,8 @@
       </field>
       <field>
         <name>row</name>
-        <type>String</type>
-        <format/>
+        <type>Number</type>
+        <format>&#x23;</format>
         <group/>
         <decimal/>
         <length>-1</length>
