@@ -440,6 +440,90 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Row denormaliser is configured using Metadata Injection step in xls2csv&#xa;&#xa;Flattens based on column letter which gives us back actual columns in spreadsheet</note>
+      <xloc>2800</xloc>
+      <yloc>400</yloc>
+      <width>676</width>
+      <heigth>70</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Load worksheets cells.&#xa;&#xa;We don&#x27;t have spreadsheet columns yet,&#xa;just a singe stream of cells with their row&#xa;and column details as metadata eg. A1, B1 etc.</note>
+      <xloc>400</xloc>
+      <yloc>160</yloc>
+      <width>383</width>
+      <heigth>110</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Load sharedStrings &#x28;all strings used in the spreadsheet&#x29;</note>
+      <xloc>40</xloc>
+      <yloc>840</yloc>
+      <width>458</width>
+      <heigth>30</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>Get styling that is set at the cell level eg. entire cell bolded...</note>
+      <xloc>1700</xloc>
+      <yloc>880</yloc>
+      <width>494</width>
+      <heigth>30</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>test</name>
@@ -487,7 +571,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>load xlsx worksheet raw xml</from>
+      <from>load xlsx worksheet</from>
       <to>trim</to>
       <enabled>Y</enabled>
     </hop>
@@ -498,7 +582,7 @@
     </hop>
     <hop>
       <from>exclude empty</from>
-      <to>Dummy &#x28;do nothing&#x29;</to>
+      <to>Drop empty</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -558,11 +642,11 @@
     </hop>
     <hop>
       <from>trim</from>
-      <to>get column letter</to>
+      <to>extract row and columns info</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>get column letter</from>
+      <from>extract row and columns info</from>
       <to>exclude empty</to>
       <enabled>Y</enabled>
     </hop>
@@ -578,11 +662,11 @@
     </hop>
     <hop>
       <from>Row denormaliser</from>
-      <to>Select values</to>
+      <to>only keep cell contents</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
+      <from>only keep cell contents</from>
       <to>export excel to csv with text styling</to>
       <enabled>Y</enabled>
     </hop>
@@ -626,14 +710,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>300</xloc>
-      <yloc>180</yloc>
+      <xloc>380</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Dummy &#x28;do nothing&#x29;</name>
+    <name>Drop empty</name>
     <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
@@ -651,8 +735,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>840</xloc>
-      <yloc>380</yloc>
+      <xloc>1080</xloc>
+      <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -676,8 +760,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
-      <yloc>400</yloc>
+      <xloc>2160</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -752,8 +836,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>1000</yloc>
+      <xloc>1360</xloc>
+      <yloc>980</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -843,8 +927,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>1000</yloc>
+      <xloc>1600</xloc>
+      <yloc>980</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -919,8 +1003,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>300</xloc>
-      <yloc>60</yloc>
+      <xloc>120</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -966,14 +1050,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2200</xloc>
-      <yloc>560</yloc>
+      <xloc>2860</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>Select values</name>
+    <name>only keep cell contents</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -1000,49 +1084,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2360</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>markup -&#x3e; utf-8</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <meta>        <name>markup</name>
-        <rename>markup</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding>UTF-8</encoding>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1620</xloc>
-      <yloc>560</yloc>
+      <xloc>3080</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1083,8 +1126,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2040</xloc>
-      <yloc>560</yloc>
+      <xloc>2680</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1123,8 +1166,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
-      <yloc>560</yloc>
+      <xloc>1920</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1159,8 +1202,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1000</xloc>
-      <yloc>560</yloc>
+      <xloc>1700</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1198,8 +1241,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>300</xloc>
-      <yloc>420</yloc>
+      <xloc>840</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1246,8 +1289,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>840</xloc>
-      <yloc>720</yloc>
+      <xloc>1480</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1284,8 +1327,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1860</xloc>
-      <yloc>560</yloc>
+      <xloc>2520</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1330,8 +1373,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>300</xloc>
-      <yloc>560</yloc>
+      <xloc>1080</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1348,7 +1391,7 @@
       <schema_name/>
     </partitioning>
 <send_true_to>reassemble worksheet</send_true_to>
-<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
+<send_false_to>Drop empty</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
@@ -1365,8 +1408,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>580</xloc>
-      <yloc>380</yloc>
+      <xloc>1080</xloc>
+      <yloc>360</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1423,8 +1466,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2620</xloc>
-      <yloc>560</yloc>
+      <xloc>3340</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1458,8 +1501,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
-      <yloc>560</yloc>
+      <xloc>2160</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1512,14 +1555,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>840</xloc>
-      <yloc>560</yloc>
+      <xloc>1480</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>get column letter</name>
+    <name>extract row and columns info</name>
     <type>RegexEval</type>
     <description/>
     <distribute>Y</distribute>
@@ -1577,8 +1620,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>580</xloc>
-      <yloc>260</yloc>
+      <xloc>840</xloc>
+      <yloc>360</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1683,14 +1726,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>300</xloc>
-      <yloc>300</yloc>
+      <xloc>640</xloc>
+      <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
 
   <step>
-    <name>load xlsx worksheet raw xml</name>
+    <name>load xlsx worksheet</name>
     <type>getXMLData</type>
     <description/>
     <distribute>Y</distribute>
@@ -1789,8 +1832,49 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>580</xloc>
-      <yloc>60</yloc>
+      <xloc>400</xloc>
+      <yloc>360</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>markup -&#x3e; utf-8</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>markup</name>
+        <rename>markup</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding>UTF-8</encoding>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2340</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1831,8 +1915,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>580</xloc>
-      <yloc>560</yloc>
+      <xloc>1280</xloc>
+      <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1871,8 +1955,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>580</xloc>
-      <yloc>160</yloc>
+      <xloc>600</xloc>
+      <yloc>360</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1906,8 +1990,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
-      <yloc>860</yloc>
+      <xloc>1600</xloc>
+      <yloc>840</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1941,8 +2025,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>860</yloc>
+      <xloc>1360</xloc>
+      <yloc>840</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
