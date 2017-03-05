@@ -9,11 +9,13 @@ Reads data directly from the XML files within the xlsx package (http://officeope
 Works with bold and italic text so far, more to come.
 
 ## Usage
-There is a basic shell script for running the correct Pentaho transformation on a xlsx file within this directory (use the base filename without the xlsx extension).
+There is a basic shell script for running the correct Pentaho transformation on an xlsx file.
 ```
-./xlsx2csv.sh test
+./xlsx2csv.sh /path/to/file.xlsx
 ```
 That or run xlsx2csv.ktr using spoon and set the spreadsheet parameter.
+
+It will create a csv file next to the original xlsx.
 ## Requires
 Working install of Pentaho PDI
 
