@@ -3,7 +3,6 @@ extension="${1##*.}"
 file=$(realpath "${1}")
 filename="${file%.*}"
 
-echo ${filename}
 if [ ! -f "${file}" ]; then
   echo "File does not exist"
   exit 1;
@@ -13,4 +12,13 @@ if [ "${extension}" != "xlsx" ]; then
   echo "Not an xlsx file"
   exit 1
 fi
-/opt/data-integration/pan.sh -file=xlsx2csv.ktr -param:spreadsheet="${filename}"
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+SOURCE_DIR=$(dirname ${SOURCE})
+
+/opt/data-integration/pan.sh -file="${SOURCE_DIR}"/xlsx2csv.ktr -param:spreadsheet="${filename}"
