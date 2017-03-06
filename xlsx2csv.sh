@@ -13,6 +13,9 @@ if [ "${extension}" != "xlsx" ]; then
   exit 1
 fi
 
+# Get the directory that this script is in even if it was run from another directory
+# (you've moved this into your $PATH for example). We still need to be able to find xlsx2csv.ktr to run.
+# Original code from here: http://stackoverflow.com/a/246128
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
