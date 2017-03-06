@@ -462,7 +462,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Load worksheets cells.&#xa;&#xa;We don&#x27;t have spreadsheet columns yet,&#xa;just a singe stream of cells with their row&#xa;and column details as metadata eg. A1, B1 etc.</note>
+      <note>Load worksheets cells.&#xa;&#xa;We don&#x27;t have spreadsheet columns yet,&#xa;just a single stream of cells with their row&#xa;and column details as metadata eg. A1, B1 etc.</note>
       <xloc>400</xloc>
       <yloc>160</yloc>
       <width>383</width>
@@ -1057,40 +1057,6 @@
     </step>
 
   <step>
-    <name>only keep cell contents</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-      <remove>        <name>v</name>
-      </remove>      <remove>        <name>s</name>
-      </remove>      <remove>        <name>r</name>
-      </remove>      <remove>        <name>result</name>
-      </remove>      <remove>        <name>row</name>
-      </remove>      <remove>        <name>cell_bold</name>
-      </remove>      <remove>        <name>cell_italic</name>
-      </remove>      <remove>        <name>style_id</name>
-      </remove>    </fields>    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>3080</xloc>
-      <yloc>540</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
     <name>Sort rows</name>
     <type>SortRows</type>
     <description/>
@@ -1473,6 +1439,71 @@
     </step>
 
   <step>
+    <name>extract row and columns info</name>
+    <type>RegexEval</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <script><![CDATA[([A-Z]+)(\d+)]]></script>    <matcher>r</matcher>
+    <resultfieldname>result</resultfieldname>
+    <usevar>N</usevar>
+    <allowcapturegroups>Y</allowcapturegroups>
+    <replacefields>Y</replacefields>
+    <canoneq>N</canoneq>
+    <caseinsensitive>N</caseinsensitive>
+    <comment>N</comment>
+    <dotall>N</dotall>
+    <multiline>N</multiline>
+    <unicode>N</unicode>
+    <unix>N</unix>
+    <fields>
+      <field>
+        <name>column</name>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
+        <currency/>
+      </field>
+      <field>
+        <name>row</name>
+        <type>Number</type>
+        <format>&#x23;</format>
+        <group/>
+        <decimal/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>none</trimtype>
+        <currency/>
+      </field>
+    </fields>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>840</xloc>
+      <yloc>360</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
     <name>filter out empty</name>
     <type>FilterRows</type>
     <description/>
@@ -1557,71 +1588,6 @@
     <GUI>
       <xloc>1480</xloc>
       <yloc>540</yloc>
-      <draw>Y</draw>
-    </GUI>
-    </step>
-
-  <step>
-    <name>extract row and columns info</name>
-    <type>RegexEval</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <script><![CDATA[([A-Z]+)(\d+)]]></script>    <matcher>r</matcher>
-    <resultfieldname>result</resultfieldname>
-    <usevar>N</usevar>
-    <allowcapturegroups>Y</allowcapturegroups>
-    <replacefields>Y</replacefields>
-    <canoneq>N</canoneq>
-    <caseinsensitive>N</caseinsensitive>
-    <comment>N</comment>
-    <dotall>N</dotall>
-    <multiline>N</multiline>
-    <unicode>N</unicode>
-    <unix>N</unix>
-    <fields>
-      <field>
-        <name>column</name>
-        <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-      <field>
-        <name>row</name>
-        <type>Number</type>
-        <format>&#x23;</format>
-        <group/>
-        <decimal/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
-        <trimtype>none</trimtype>
-        <currency/>
-      </field>
-    </fields>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>840</xloc>
-      <yloc>360</yloc>
       <draw>Y</draw>
     </GUI>
     </step>
@@ -1874,6 +1840,40 @@
     </remotesteps>
     <GUI>
       <xloc>2340</xloc>
+      <yloc>540</yloc>
+      <draw>Y</draw>
+    </GUI>
+    </step>
+
+  <step>
+    <name>only keep cell contents</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>        <select_unspecified>N</select_unspecified>
+      <remove>        <name>v</name>
+      </remove>      <remove>        <name>s</name>
+      </remove>      <remove>        <name>r</name>
+      </remove>      <remove>        <name>result</name>
+      </remove>      <remove>        <name>row</name>
+      </remove>      <remove>        <name>cell_bold</name>
+      </remove>      <remove>        <name>cell_italic</name>
+      </remove>      <remove>        <name>style_id</name>
+      </remove>    </fields>    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3080</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
