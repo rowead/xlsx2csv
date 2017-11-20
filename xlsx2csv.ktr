@@ -2,27 +2,27 @@
 <transformation>
   <info>
     <name>xlsx2csv</name>
-    <description/>
-    <extended_description/>
-    <trans_version/>
+    <description />
+    <extended_description />
+    <trans_version />
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
-    <directory>&#x2f;</directory>
+    <directory>/</directory>
     <parameters>
       <parameter>
         <name>spreadsheet</name>
-        <default_value>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x24;&#x7b;file.separator&#x7d;onthisday</default_value>
-        <description/>
+        <default_value>${Internal.Transformation.Filename.Directory}${file.separator}onthisday</default_value>
+        <description />
       </parameter>
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <size_limit_lines/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -47,37 +47,37 @@
           <id>LINES_READ</id>
           <enabled>Y</enabled>
           <name>LINES_READ</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_WRITTEN</id>
           <enabled>Y</enabled>
           <name>LINES_WRITTEN</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_UPDATED</id>
           <enabled>Y</enabled>
           <name>LINES_UPDATED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_INPUT</id>
           <enabled>Y</enabled>
           <name>LINES_INPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_OUTPUT</id>
           <enabled>Y</enabled>
           <name>LINES_OUTPUT</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>LINES_REJECTED</id>
           <enabled>Y</enabled>
           <name>LINES_REJECTED</name>
-          <subject/>
+          <subject />
         </field>
         <field>
           <id>ERRORS</id>
@@ -131,11 +131,11 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <interval/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -213,10 +213,10 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -279,10 +279,10 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -355,10 +355,10 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
-        <timeout_days/>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
         <field>
           <id>ID_BATCH</id>
           <enabled>Y</enabled>
@@ -407,9 +407,9 @@
       </metrics-log-table>
     </log>
     <maxdate>
-      <connection/>
-      <table/>
-      <field/>
+      <connection />
+      <table />
+      <field />
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
@@ -420,7 +420,7 @@
     <feedback_shown>Y</feedback_shown>
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
-    <shared_objects_file/>
+    <shared_objects_file />
     <capture_step_performance>N</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
@@ -433,10 +433,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2017&#x2f;01&#x2f;09 16&#x3a;47&#x3a;22.148</created_date>
+    <created_date>2017/01/09 16:47:22.148</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2017&#x2f;01&#x2f;09 16&#x3a;47&#x3a;22.148</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <modified_date>2017/01/09 16:47:22.148</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -462,7 +462,7 @@
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>Set spreadsheet path variable so it&#x27;s available in the conversion transformation &#x28;parameters aren&#x27;t propagated&#x29;</note>
+      <note>Set spreadsheet path variable so it's available in the conversion transformation (parameters aren't propagated)</note>
       <xloc>380</xloc>
       <yloc>460</yloc>
       <width>910</width>
@@ -518,24 +518,24 @@
   <step>
     <name>Set Variables</name>
     <type>SetVariable</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
-        <field_name/>
+        <field_name />
         <variable_name>sheet</variable_name>
         <variable_type>JVM</variable_type>
-        <default_value>&#x24;&#x7b;spreadsheet&#x7d;</default_value>
-        </field>
-      </fields>
+        <default_value>${spreadsheet}</default_value>
+      </field>
+    </fields>
     <use_formatting>Y</use_formatting>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -547,26 +547,29 @@
       <yloc>460</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>Unique columns</name>
     <type>Unique</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <count_rows>N</count_rows>
-      <count_field/>
-      <reject_duplicate_row>N</reject_duplicate_row>
-      <error_description/>
-    <fields>      <field>        <name>column</name>
+    <count_rows>N</count_rows>
+    <count_field />
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description />
+    <fields>
+      <field>
+        <name>column</name>
         <case_insensitive>N</case_insensitive>
-        </field>      </fields>    <cluster_schema/>
+      </field>
+    </fields>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -578,27 +581,26 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>extra metadata</name>
     <type>Constant</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <fields>
       <field>
         <name>value_fieldname</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <nullif>markup</nullif>
         <length>-1</length>
         <precision>-1</precision>
@@ -607,17 +609,17 @@
       <field>
         <name>type</name>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <nullif>String</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -629,21 +631,20 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>load cells</name>
     <type>getXMLData</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <include>N</include>
-    <include_field/>
+    <include_field />
     <rownum>N</rownum>
     <addresultfile>N</addresultfile>
     <namespaceaware>N</namespaceaware>
@@ -653,26 +654,26 @@
     <usetoken>N</usetoken>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
     <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
+    <rownum_field />
     <encoding>UTF-8</encoding>
     <file>
-      <name>&#x2f;home&#x2f;andrew&#x2f;onthisday.xlsx_FILES&#x2f;xl&#x2f;sharedStrings.xml</name>
-      <filemask/>
-      <exclude_filemask/>
+      <name>/home/andrew/onthisday.xlsx_FILES/xl/sharedStrings.xml</name>
+      <filemask />
+      <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
     </file>
     <fields>
       <field>
         <name>v</name>
-        <xpath>&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;v&#x27;&#x5d;</xpath>
+        <xpath>*[name()='v']</xpath>
         <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -680,14 +681,14 @@
       </field>
       <field>
         <name>r</name>
-        <xpath>&#x40;r</xpath>
+        <xpath>@r</xpath>
         <element_type>attribut</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -695,20 +696,20 @@
       </field>
     </fields>
     <limit>0</limit>
-    <loopxpath>&#x2f;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;c&#x27;&#x5d;</loopxpath>
+    <loopxpath>//*[name()='c']</loopxpath>
     <IsInFields>Y</IsInFields>
     <IsAFile>N</IsAFile>
     <XmlField>row</XmlField>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
+    <prunePath />
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -720,21 +721,20 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>load rows</name>
     <type>getXMLData</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <include>N</include>
-    <include_field/>
+    <include_field />
     <rownum>N</rownum>
     <addresultfile>N</addresultfile>
     <namespaceaware>N</namespaceaware>
@@ -744,12 +744,12 @@
     <usetoken>N</usetoken>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
     <doNotFailIfNoFile>Y</doNotFailIfNoFile>
-    <rownum_field/>
+    <rownum_field />
     <encoding>UTF-8</encoding>
     <file>
-      <name>zip&#x3a;&#x24;&#x7b;spreadsheet&#x7d;.xlsx&#x21;&#x2f;xl&#x2f;worksheets&#x2f;sheet1.xml</name>
-      <filemask/>
-      <exclude_filemask/>
+      <name>zip:${spreadsheet}.xlsx!/xl/worksheets/sheet1.xml</name>
+      <filemask />
+      <exclude_filemask />
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
     </file>
@@ -760,10 +760,10 @@
         <element_type>node</element_type>
         <result_type>singlenode</result_type>
         <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -771,20 +771,20 @@
       </field>
     </fields>
     <limit>0</limit>
-    <loopxpath>&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;worksheet&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;sheetData&#x27;&#x5d;&#x2f;&#x2a;&#x5b;name&#x28;&#x29;&#x3d;&#x27;row&#x27;&#x5d;</loopxpath>
+    <loopxpath>/*[name()='worksheet']/*[name()='sheetData']/*[name()='row']</loopxpath>
     <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <XmlField/>
-    <prunePath/>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <cluster_schema/>
+    <XmlField />
+    <prunePath />
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -796,20 +796,20 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>row and column details</name>
     <type>RegexEval</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-    <script><![CDATA[([A-Z]+)(\d+)]]></script>    <matcher>r</matcher>
+    <script>([A-Z]+)(\d+)</script>
+    <matcher>r</matcher>
     <resultfieldname>result</resultfieldname>
     <usevar>N</usevar>
     <allowcapturegroups>Y</allowcapturegroups>
@@ -825,31 +825,31 @@
       <field>
         <name>column</name>
         <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
+        <format />
+        <group />
+        <decimal />
         <length>-1</length>
         <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
+        <nullif />
+        <ifnull />
         <trimtype>none</trimtype>
-        <currency/>
+        <currency />
       </field>
       <field>
         <name>row</name>
         <type>String</type>
-        <format/>
-        <group/>
-        <decimal/>
+        <format />
+        <group />
+        <decimal />
         <length>-1</length>
         <precision>-1</precision>
-        <nullif/>
-        <ifnull/>
+        <nullif />
+        <ifnull />
         <trimtype>none</trimtype>
-        <currency/>
+        <currency />
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -861,26 +861,25 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>sort for next step</name>
     <type>SortRows</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
     <fields>
       <field>
         <name>column</name>
@@ -891,7 +890,7 @@
         <presorted>N</presorted>
       </field>
     </fields>
-    <cluster_schema/>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -903,50 +902,60 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step>
     <name>xlsx_conversion</name>
     <type>MetaInject</type>
-    <description/>
+    <description />
     <distribute>Y</distribute>
-    <custom_distribution/>
+    <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
-      <schema_name/>
+      <schema_name />
     </partitioning>
     <specification_method>filename</specification_method>
-    <trans_object_id/>
-    <trans_name/>
-    <filename>&#x24;&#x7b;Internal.Transformation.Filename.Directory&#x7d;&#x24;&#x7b;file.separator&#x7d;xlsx_conversion.ktr</filename>
-    <directory_path/>
-    <source_step/>
-    <source_output_fields>    </source_output_fields>    <target_file/>
+    <trans_object_id />
+    <trans_name />
+    <filename>${Internal.Transformation.Filename.Directory}${file.separator}xlsx_conversion.ktr</filename>
+    <directory_path />
+    <source_step />
+    <source_output_fields>    </source_output_fields>
+    <target_file />
     <no_execution>N</no_execution>
-    <stream_source_step/>
-    <stream_target_step/>
-    <mappings>      <mapping>        <target_step_name>Row denormaliser</target_step_name>
+    <stream_source_step />
+    <stream_target_step />
+    <mappings>
+      <mapping>
+        <target_step_name>Row denormaliser</target_step_name>
         <target_attribute_key>TARGET_NAME</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>extra metadata</source_step>
         <source_field>column</source_field>
-      </mapping>      <mapping>        <target_step_name>Row denormaliser</target_step_name>
+      </mapping>
+      <mapping>
+        <target_step_name>Row denormaliser</target_step_name>
         <target_attribute_key>NAME</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>extra metadata</source_step>
         <source_field>value_fieldname</source_field>
-      </mapping>      <mapping>        <target_step_name>Row denormaliser</target_step_name>
+      </mapping>
+      <mapping>
+        <target_step_name>Row denormaliser</target_step_name>
         <target_attribute_key>KEY_VALUE</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>extra metadata</source_step>
         <source_field>column</source_field>
-      </mapping>      <mapping>        <target_step_name>Row denormaliser</target_step_name>
+      </mapping>
+      <mapping>
+        <target_step_name>Row denormaliser</target_step_name>
         <target_attribute_key>TARGET_TYPE</target_attribute_key>
         <target_detail>Y</target_detail>
         <source_step>extra metadata</source_step>
         <source_field>type</source_field>
-      </mapping>    </mappings>    <cluster_schema/>
+      </mapping>
+    </mappings>
+    <cluster_schema />
     <remotesteps>
       <input>
       </input>
@@ -958,8 +967,7 @@
       <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
-    </step>
-
+  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
