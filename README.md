@@ -2,7 +2,7 @@
 
 Extracts styled text from xlsx into csv with html markup
 
-Exercise in learning to handle XML with Pentaho and it's Metadata Injection Step.
+This is an exercise in learning to handle XML with Pentaho and it's Metadata Injection Step.
 
 Reads data directly from the XML files within the xlsx package (http://officeopenxml.com/anatomyofOOXML-xlsx.php).
 
@@ -19,4 +19,4 @@ It will create a csv file next to the original xlsx.
 ## Requires
 Working install of Pentaho PDI
 
-Alter xlsx2csv.sh to point to pan.sh within Pentaho's intalled directory.
+Alter xlsx2csv.sh to point to pan.sh within Pentaho's installed directory.
