@@ -725,9 +725,9 @@ and column details as metadata eg. A1, B1 etc.</note>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <valuename>sharered_string_seq</valuename>
+    <valuename>shared_string_seq</valuename>
     <use_database>N</use_database>
-    <connection />
+    <connection>test</connection>
     <schema />
     <seqname>SEQ_</seqname>
     <use_counter>Y</use_counter>
@@ -1380,7 +1380,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     <give_back_row>N</give_back_row>
     <group>
       <field>
-        <name>sharered_string_seq</name>
+        <name>shared_string_seq</name>
       </field>
     </group>
     <fields>
@@ -1989,7 +1989,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     <lookup>
       <key>
         <name>v</name>
-        <field>sharered_string_seq</field>
+        <field>shared_string_seq</field>
       </key>
       <value>
         <name>shared_string_markup_cat</name>
