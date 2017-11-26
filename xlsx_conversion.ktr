@@ -444,7 +444,7 @@
       <note>Row denormaliser is configured using Metadata Injection step in xls2csv
 
 Flattens based on column letter which gives us back actual columns in spreadsheet</note>
-      <xloc>2800</xloc>
+      <xloc>2880</xloc>
       <yloc>400</yloc>
       <width>676</width>
       <heigth>70</heigth>
@@ -511,10 +511,32 @@ and column details as metadata eg. A1, B1 etc.</note>
     </notepad>
     <notepad>
       <note>Get styling that is set at the cell level eg. entire cell bolded...</note>
-      <xloc>1700</xloc>
+      <xloc>1780</xloc>
       <yloc>880</yloc>
       <width>494</width>
       <heigth>30</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>If the cell does not contain string or text values then
+the cell contents is numeric, so grab the value as is (no lookup into sharedstrings)</note>
+      <xloc>1260</xloc>
+      <yloc>265</yloc>
+      <width>664</width>
+      <heigth>50</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>11</fontsize>
       <fontbold>N</fontbold>
@@ -609,18 +631,8 @@ and column details as metadata eg. A1, B1 etc.</note>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>exclude empty</from>
-      <to>reassemble worksheet</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>exclude empty</from>
-      <to>Discard empty</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>concat components into cells value</from>
-      <to>reassemble worksheet</to>
+      <to>string markup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -651,11 +663,6 @@ and column details as metadata eg. A1, B1 etc.</note>
     <hop>
       <from>unique style id</from>
       <to>cell styles</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>reassemble worksheet</from>
-      <to>get cell styles</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -713,6 +720,36 @@ and column details as metadata eg. A1, B1 etc.</note>
       <to>clean up markup</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>exclude empty</from>
+      <to>Numeric?</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Numeric?</from>
+      <to>string markup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>string markup</from>
+      <to>join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>join</from>
+      <to>get cell styles</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Numeric?</from>
+      <to>numeric markup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>numeric markup</from>
+      <to>join</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add unique no to cell</name>
@@ -767,32 +804,8 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2160</xloc>
+      <xloc>2240</xloc>
       <yloc>380</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Discard empty</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1080</xloc>
-      <yloc>200</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -866,7 +879,7 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1360</xloc>
+      <xloc>1460</xloc>
       <yloc>980</yloc>
       <draw>Y</draw>
     </GUI>
@@ -956,7 +969,7 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1600</xloc>
+      <xloc>1680</xloc>
       <yloc>980</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1070,7 +1083,7 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1920</xloc>
+      <xloc>2000</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1116,7 +1129,7 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2860</xloc>
+      <xloc>2940</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1157,7 +1170,7 @@ and column details as metadata eg. A1, B1 etc.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2680</xloc>
+      <xloc>2760</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1205,7 +1218,7 @@ if (cell_italic == 'true') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1700</xloc>
+      <xloc>1780</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1317,7 +1330,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1480</xloc>
+      <xloc>1560</xloc>
       <yloc>700</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1354,7 +1367,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2520</xloc>
+      <xloc>2600</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1415,8 +1428,8 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>reassemble worksheet</send_true_to>
-    <send_false_to>Discard empty</send_false_to>
+    <send_true_to>Numeric?</send_true_to>
+    <send_false_to />
     <compare>
       <condition>
         <negated>N</negated>
@@ -1499,7 +1512,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3340</xloc>
+      <xloc>3420</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1607,7 +1620,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2160</xloc>
+      <xloc>2240</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1660,7 +1673,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1480</xloc>
+      <xloc>1560</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1929,7 +1942,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2340</xloc>
+      <xloc>2420</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1983,13 +1996,13 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3080</xloc>
+      <xloc>3160</xloc>
       <yloc>540</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>reassemble worksheet</name>
+    <name>string markup</name>
     <type>StreamLookup</type>
     <description />
     <distribute>Y</distribute>
@@ -2013,7 +2026,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
         <name>shared_string_markup_cat</name>
         <rename>markup</rename>
         <default />
-        <type>None</type>
+        <type>String</type>
       </value>
     </lookup>
     <cluster_schema />
@@ -2097,7 +2110,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1600</xloc>
+      <xloc>1680</xloc>
       <yloc>840</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2131,8 +2144,134 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1360</xloc>
+      <xloc>1460</xloc>
       <yloc>840</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Numeric?</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>numeric markup</send_true_to>
+    <send_false_to>string markup</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>t</leftvalue>
+        <function>&lt;></function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>s</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1180</xloc>
+      <yloc>460</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>join</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1420</xloc>
+      <yloc>540</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>numeric markup</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>v</name>
+        <rename />
+      </field>
+      <field>
+        <name>s</name>
+        <rename />
+      </field>
+      <field>
+        <name>r</name>
+        <rename />
+      </field>
+      <field>
+        <name>t</name>
+        <rename />
+      </field>
+      <field>
+        <name>result</name>
+        <rename />
+      </field>
+      <field>
+        <name>column</name>
+        <rename />
+      </field>
+      <field>
+        <name>row</name>
+        <rename />
+      </field>
+      <field>
+        <name>v</name>
+        <rename>markup</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1280</xloc>
+      <yloc>380</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
