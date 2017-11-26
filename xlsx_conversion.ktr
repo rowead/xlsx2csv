@@ -1013,7 +1013,7 @@ and column details as metadata eg. A1, B1 etc.</note>
     <loopxpath>/*[name()='sst']/*[name()='si']</loopxpath>
     <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <XmlField />
+    <XmlField>worksheet</XmlField>
     <prunePath />
     <shortFileFieldName />
     <pathFieldName />
@@ -1795,7 +1795,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     <rownum_field />
     <encoding>UTF-8</encoding>
     <file>
-      <name>zip:${sheet}.xlsx!/xl/worksheets/sheet1.xml</name>
+      <name />
       <filemask />
       <exclude_filemask />
       <file_required>N</file_required>
@@ -1852,7 +1852,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     <loopxpath>/*[name()='worksheet']/*[name()='sheetData']/*[name()='row']/*[name()='c']</loopxpath>
     <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <XmlField />
+    <XmlField>uri</XmlField>
     <prunePath />
     <shortFileFieldName />
     <pathFieldName />
