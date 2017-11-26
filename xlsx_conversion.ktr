@@ -1835,7 +1835,22 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       <field>
         <name>r</name>
         <xpath>@r</xpath>
-        <element_type>node</element_type>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>t</name>
+        <xpath>@t</xpath>
+        <element_type>attribut</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format />
@@ -1936,9 +1951,6 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
         <name>v</name>
       </remove>
       <remove>
-        <name>s</name>
-      </remove>
-      <remove>
         <name>r</name>
       </remove>
       <remove>
@@ -1955,6 +1967,12 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </remove>
       <remove>
         <name>style_id</name>
+      </remove>
+      <remove>
+        <name>s</name>
+      </remove>
+      <remove>
+        <name>t</name>
       </remove>
     </fields>
     <cluster_schema />
