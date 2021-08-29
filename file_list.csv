@@ -1,2 +1,3 @@
 file,output,active?
-file:///home/andrew/Documents/projects/xlsx2csv/test.xlsx,file:///home/andrew/Documents/projects/xlsx2csv/,Y
+file:///home/andrew/projects/xlsx2csv/test.xlsx,file:///home/andrew/projects/xlsx2csv/,Y
+file:///home/andrew/projects/xlsx2csv/test-wide.xlsx,file:///home/andrew/projects/xlsx2csv/,Y
