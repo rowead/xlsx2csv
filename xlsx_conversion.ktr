@@ -891,8 +891,8 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
     <fields>
       <field>
         <name>cell_bold</name>
-        <xpath>./*[name()='b']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(./*[name()='b'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
@@ -906,8 +906,8 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       </field>
       <field>
         <name>cell_italic</name>
-        <xpath>./*[name()='i']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(./*[name()='i'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
@@ -921,8 +921,8 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       </field>
       <field>
         <name>cell_strike</name>
-        <xpath>./*[name()='strike']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(./*[name()='strike'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
@@ -1244,13 +1244,13 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>if (cell_bold == 'true' &amp;&amp; markup.indexOf('&lt;strong>') &lt;0) { // seem to get bold cells with bold tags already
+        <jsScript_script>if (cell_bold == 'b' &amp;&amp; markup.indexOf('&lt;strong>') &lt;0) { // seem to get bold cells with bold tags already
 	markup = '&lt;strong>' + markup + '&lt;/strong>';
 }
-if (cell_italic == 'true') {
+if (cell_italic == 'i') {
 	markup = '&lt;em>' + markup + '&lt;/em>';
 }
-if (cell_strike == 'true') {
+if (cell_strike == 'stike') {
 	markup = '&lt;strike>' + markup + '&lt;/strike>';
 }</jsScript_script>
       </jsScript>
@@ -1304,13 +1304,13 @@ var shared_strings_markup;
 
 shared_strings_markup = content;
 
-if (bold == 'true') {
+if (bold == 'b') {
 	shared_strings_markup = '&lt;strong>' + shared_strings_markup + '&lt;/strong>';
 }
-if (italics == 'true') {
+if (italics == 'i') {
 	shared_strings_markup = '&lt;em>' + shared_strings_markup + '&lt;/em>';
 }
-if (strike == 'true') {
+if (strike == 'stike') {
 	shared_strings_markup = '&lt;strike>' + shared_strings_markup + '&lt;/strike>';
 }
 if (color != '') {
@@ -1835,8 +1835,8 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </field>
       <field>
         <name>bold</name>
-        <xpath>../*[name()='rPr']/*[name()='b']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(../*[name()='rPr']/*[name()='b'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
@@ -1850,8 +1850,8 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </field>
       <field>
         <name>italics</name>
-        <xpath>../*[name()='rPr']/*[name()='i']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(../*[name()='rPr']/*[name()='i'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
@@ -1865,8 +1865,8 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </field>
       <field>
         <name>strike</name>
-        <xpath>../*[name()='rPr']/*[name()='strike']/@val</xpath>
-        <element_type>attribut</element_type>
+        <xpath>name(../*[name()='rPr']/*[name()='strike'])</xpath>
+        <element_type>node</element_type>
         <result_type>valueof</result_type>
         <type>String</type>
         <format/>
