@@ -491,7 +491,7 @@
     <hop>
       <from>Generate Rows</from>
       <to>load rows</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Unique columns</from>
@@ -516,7 +516,7 @@
     <hop>
       <from>Get rows from result</from>
       <to>load rows</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>sort for next step</from>

@@ -531,12 +531,11 @@ and column details as metadata eg. A1, B1 etc.</note>
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>If the cell does not contain string or text values then
-the cell contents is numeric, so grab the value as is (no lookup into sharedstrings)</note>
-      <xloc>1260</xloc>
-      <yloc>265</yloc>
-      <width>664</width>
-      <heigth>50</heigth>
+      <note>If the cell is numeric then lookup the format, Date etc.</note>
+      <xloc>1686</xloc>
+      <yloc>325</yloc>
+      <width>368</width>
+      <heigth>27</heigth>
       <fontname>Ubuntu</fontname>
       <fontsize>11</fontsize>
       <fontbold>N</fontbold>
@@ -671,11 +670,6 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>add cell styling</from>
-      <to>Remove CR &amp; LF</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>trim</from>
       <to>extract row and columns info</to>
       <enabled>Y</enabled>
@@ -711,23 +705,8 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>string markup</from>
-      <to>join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>join</from>
-      <to>get cell styles</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Numeric?</from>
       <to>numeric markup</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>numeric markup</from>
-      <to>join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -745,7 +724,106 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       <to>exclude empty</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Load cellXfs</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>unique cellXfs id</from>
+      <to>Lookup formatCode</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Load numFmts</from>
+      <to>Stream lookup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Stream lookup</from>
+      <to>unique cellXfs id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>numeric markup</from>
+      <to>Lookup formatCode</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>string markup</from>
+      <to>Add constants</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>get cell styles</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Lookup formatCode</from>
+      <to>get cell styles</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dates</from>
+      <to>Format Dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>add cell styling</from>
+      <to>Dates</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Format Dates</from>
+      <to>Remove CR &amp; LF</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dates</from>
+      <to>Remove CR &amp; LF</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>formatCode</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>Y</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Add unique no to cell</name>
     <type>Sequence</type>
@@ -778,6 +856,275 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
     <GUI>
       <xloc>380</xloc>
       <yloc>700</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dates</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Format Dates</send_true_to>
+    <send_false_to>Remove CR &amp; LF</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>formatCode</leftvalue>
+        <function>CONTAINS</function>
+        <rightvalue/>
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>yyyy</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask/>
+        </value>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1872</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Format Dates</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+function getJsDateFromExcel(excelDate) {
+	var date = new Date((excelDate - (25567 + 2)) * 86400 * 1000);
+	// Convert back to UTC datetime
+	var localTime = new Date(date.getTime() + (new Date()).getTimezoneOffset() * 60000);
+	return localTime;
+}
+
+
+
+if (formatCode != undefined &amp;&amp; v != undefined &amp;&amp; indexOf(formatCode, 'yyyy') >= 0) {
+	var date_field = getJsDateFromExcel(v);
+	date_field_str = date2str(date_field,"yyyy-MM-dd'T'HH:mm:ss");
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>date_field_str</name>
+        <rename>markup</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1952</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load cellXfs</name>
+    <type>getXMLData</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <namespaceaware>N</namespaceaware>
+    <ignorecomments>N</ignorecomments>
+    <readurl>N</readurl>
+    <validating>N</validating>
+    <usetoken>N</usetoken>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <rownum_field/>
+    <encoding>UTF-8</encoding>
+    <file>
+      <name>zip:file:///home/andrew/projects/xlsx2csv/test-wide.xlsx!/xl/styles.xml</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>numFmtId</name>
+        <xpath>@numFmtId</xpath>
+        <element_type>node</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <loopxpath>/*[name()='styleSheet']/*[name()='cellXfs']/*[name()='xf']</loopxpath>
+    <IsInFields>N</IsInFields>
+    <IsAFile>N</IsAFile>
+    <XmlField/>
+    <prunePath/>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1264</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Load numFmts</name>
+    <type>getXMLData</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <include>N</include>
+    <include_field/>
+    <rownum>N</rownum>
+    <addresultfile>N</addresultfile>
+    <namespaceaware>N</namespaceaware>
+    <ignorecomments>N</ignorecomments>
+    <readurl>N</readurl>
+    <validating>N</validating>
+    <usetoken>N</usetoken>
+    <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
+    <rownum_field/>
+    <encoding>UTF-8</encoding>
+    <file>
+      <name>zip:file:///home/andrew/projects/xlsx2csv/test-wide.xlsx!/xl/styles.xml</name>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>formatCode</name>
+        <xpath>@formatCode</xpath>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>numFmtId</name>
+        <xpath>@numFmtId</xpath>
+        <element_type>attribut</element_type>
+        <result_type>valueof</result_type>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>0</limit>
+    <loopxpath>/*[name()='styleSheet']/*[name()='numFmts']/*[name()='numFmt']</loopxpath>
+    <IsInFields>N</IsInFields>
+    <IsAFile>N</IsAFile>
+    <XmlField/>
+    <prunePath/>
+    <shortFileFieldName/>
+    <pathFieldName/>
+    <hiddenFieldName/>
+    <lastModificationTimeFieldName/>
+    <uriNameFieldName/>
+    <rootUriNameFieldName/>
+    <extensionFieldName/>
+    <sizeFieldName/>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1055,6 +1402,48 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
     </GUI>
   </step>
   <step>
+    <name>Lookup formatCode</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <from>unique cellXfs id</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>s</name>
+        <field>numFmtId_id</field>
+      </key>
+      <value>
+        <name>formatCode</name>
+        <rename>formatCode</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Numeric?</name>
     <type>FilterRows</type>
     <description/>
@@ -1133,8 +1522,8 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2000</xloc>
-      <yloc>540</yloc>
+      <xloc>2048</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1228,6 +1617,48 @@ the cell contents is numeric, so grab the value as is (no lookup into sharedstri
     </GUI>
   </step>
   <step>
+    <name>Stream lookup</name>
+    <type>StreamLookup</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <from>Load numFmts</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>numFmtId</name>
+        <field>numFmtId</field>
+      </key>
+      <value>
+        <name>formatCode</name>
+        <rename>formatCode</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1392</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>add cell styling</name>
     <type>ScriptValueMod</type>
     <description/>
@@ -1274,8 +1705,8 @@ if (cell_strike == 'stike') {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1780</xloc>
-      <yloc>540</yloc>
+      <xloc>1760</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1756,33 +2187,8 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1560</xloc>
-      <yloc>540</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>join</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1420</xloc>
-      <yloc>540</yloc>
+      <xloc>1568</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2184,6 +2590,9 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
       <remove>
         <name>cell_strike</name>
       </remove>
+      <remove>
+        <name>formatCode</name>
+      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -2237,7 +2646,7 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>1280</xloc>
-      <yloc>540</yloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2278,6 +2687,41 @@ shared_strings_markup = nl2br(shared_strings_markup,true);</jsScript_script>
     <GUI>
       <xloc>600</xloc>
       <yloc>360</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>unique cellXfs id</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>numFmtId_id</valuename>
+    <use_database>N</use_database>
+    <connection>test</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>0</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
